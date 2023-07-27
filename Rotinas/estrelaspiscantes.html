@@ -37,7 +37,6 @@ Estrelas que surgem e desaparecem...
         .attr("width", 1500)
         .attr("height", 800);
    
-	svg.selectAll("*").remove();
 
 	var i;
 	var j;
@@ -46,6 +45,8 @@ Estrelas que surgem e desaparecem...
 	
 	function Desenhar()
 	{
+		svg.selectAll("*").remove();
+
 		for (i =0;i <1000; i++)
 		{
 					svg.append("circle")
