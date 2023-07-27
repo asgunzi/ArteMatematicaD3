@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+
+<title>Arte Matemática com JS D3</title>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<style>  
+</style>
+
+</head>
+
+
+<body>
+
+
+<h1>Estrelas piscantes</h1>
+
+
+
+<form>
+Estrelas que surgem e desaparecem...  
+	<button type = "button"  onclick="Desenhar()" tabindex = "0">Rodar</button>  
+</form>
+
+<p id = "svg01"></p>
+
+<br>
+<hr>
+
+
+<script>
+    var svg = d3.select("#svg01")
+        .append("svg")
+        .attr("width", 1500)
+        .attr("height", 800);
+   
+	svg.selectAll("*").remove();
+
+	var i;
+	var j;
+	
+	Desenhar();
+	
+	function Desenhar()
+	{
+		for (i =0;i <1000; i++)
+		{
+					svg.append("circle")
+					.transition()
+					.duration(1000)    
+					.delay(i*5)
+				  .attr("cx", 1500*Math.random() +5)
+				  .attr("cy", 800*Math.random()+5)
+				  .attr("r", 20*Math.random() +5)
+				  .attr("stroke", "black")
+				  .attr("stroke-width", 1)
+				  .attr("fill", d3.schemeCategory10[Math.floor(Math.random() * 10)])
+				.transition()
+				.ease(d3.easeCubicOut)
+				.duration(500)    
+				.attr("r", 0);
+			}
+	}
+
+
+</script>
+</body>
+</html>
