@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+
+<title>Arte Matemática com JS D3</title>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<style>  
+</style>
+
+</head>
+
+
+<body>
+
+
+<h1>Fractal Sierpinski Retângulo</h1>
+
+
+<form>
+  Profundidade do fractal
+  <select onchange = "Desenhar()" id="SelectProfund">
+    
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3" selected >3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>   
+</form>
+
+
+
+
+<p id = "svg01"></p>
+
+<br>
+<hr>
+
+
+<script>
+    var svg = d3.select("#svg01")
+        .append("svg")
+        .attr("width", 1500)
+        .attr("height", 800);
+      
+	Desenhar();
+	
+	function retangulo(x0, y0, h)
+	{
+		svg.append("rect")
+	  .attr("x", x0)
+	  .attr("y", y0)
+	  .attr("width", h)
+	  .attr("height", h)
+	  .attr("stroke", "black")
+	  .attr("fill", "transparent");
+	}
+
+	function Sierp(x0,y0,h,profundidade)
+	{
+	//Cria um retângulo no meio, em (x0 + h/3, y0 + h/3), com altura h/3
+	retangulo(x0+h/3,y0+h/3,h/3);
+	
+	//Chama mais 8 vezes a função, para todos os 9 sub retângulos excetos o do meio
+	
+	//Isso se a profundidade permitir
+	if (profundidade>0)
+	{
+		Sierp(x0,y0, h/3, profundidade-1);	
+		Sierp(x0+h/3,y0, h/3, profundidade-1);	
+		Sierp(x0+2*h/3,y0, h/3, profundidade-1);	
+	
+		Sierp(x0,y0+h/3, h/3, profundidade-1);	
+		Sierp(x0+2*h/3,y0+h/3, h/3, profundidade-1);	
+		
+		Sierp(x0,y0+2*h/3, h/3, profundidade-1);	
+		Sierp(x0+h/3,y0+2*h/3, h/3, profundidade-1);	
+		Sierp(x0+2*h/3,y0+2*h/3, h/3, profundidade-1);	
+
+	}
+	
+	}
+
+	function Desenhar()
+	{
+	svg.selectAll("*").remove();
+
+	//---------------------------------------------------------------
+
+	var profundidade;
+	
+	profundidade = parseInt(d3.select("#SelectProfund").property("value"));
+		
+		
+	var x0 = 400;
+	var y0 = 0;
+	var h= 450;
+	
+	
+	//Retângulo inicial, para fazer o contorno
+	retangulo(x0,y0,h);
+
+	//Chama função recursiva
+	Sierp(x0,y0, h, profundidade);
+	
+	}
+	
+	
+
+</script>
+</body>
+</html>
