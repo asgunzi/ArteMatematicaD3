@@ -48,7 +48,7 @@
       
 	Desenhar();
 	
-	function retangulo(x0, y0, h)
+	function retangulo(x0, y0, h, cor)
 	{
 		svg.append("rect")
 	  .attr("x", x0)
@@ -56,13 +56,13 @@
 	  .attr("width", h)
 	  .attr("height", h)
 	  .attr("stroke", "black")
-	  .attr("fill", "transparent");
+	  .attr("fill", cor);
 	}
 
 	function Sierp(x0,y0,h,profundidade)
 	{
 	//Cria um retângulo no meio, em (x0 + h/3, y0 + h/3), com altura h/3
-	retangulo(x0+h/3,y0+h/3,h/3);
+	retangulo(x0+h/3,y0+h/3,h/3, "white");
 	
 	//Chama mais 8 vezes a função, para todos os 9 sub retângulos excetos o do meio
 	
@@ -101,7 +101,7 @@
 	
 	
 	//Retângulo inicial, para fazer o contorno
-	retangulo(x0,y0,h);
+	retangulo(x0,y0,h, "darkblue");
 
 	//Chama função recursiva
 	Sierp(x0,y0, h, profundidade);
