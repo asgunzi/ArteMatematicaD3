@@ -1,2 +1,7 @@
 # ArteMatematicaD3
-Arte Matemática com JS D3 - repositório de códigos
+
+Repositório de códigos para o livro "Arte Matemática com JS D3".
+
+
+By Arnaldo Gunzi
+
