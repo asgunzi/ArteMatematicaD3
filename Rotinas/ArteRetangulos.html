@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+
+ <title>Arte com retângulos</title>
+ 
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+</head>
+<style>
+</style>	
+
+
+<body>
+
+      <h1><a href="https://ideiasesquecidas.com"> <img src=	"https://ideiasesquecidas.files.wordpress.com/2020/03/forgottenlogo.png" width="90" height = "50"></a>Arte com retângulos</h1>
+
+
+<p>
+<button onclick="Desenhar()">Rodar</button>
+</p>
+
+
+</Body>   
+</Html>  
+
+<script type = "text/javascript">
+    var svg = d3.select("body")
+        .append("svg")
+        .attr("width", 1520)
+        .attr("height", 800)
+
+	Desenhar();
+
+	function Desenhar()
+	{
+	svg.selectAll("*").remove();
+
+	//---------------------------------------------------------------
+	var i;
+	var j;
+	for (i=0; i<10;i++)
+	{
+		for (j=0; j<10;j++)
+		{
+			svg.append("rect")
+			  .attr("x", 130*i + Math.random()*20)
+			  .attr("y", 80*j + Math.random()*20)
+			  .attr("width", 140+ Math.random()*20)
+			  .attr("height", 90+ Math.random()*20)
+			  .attr("stroke", "black")
+			  .attr("fill", "darkblue")
+			  .attr("opacity", 0.7)
+		}
+	}
+	
+		for (j=0; j<12;j++)
+		{
+			svg.append("rect")
+			  .attr("x", Math.random()*1300)
+			  .attr("y",  Math.random()*800)
+			  .attr("width", 150+ Math.random()*150)
+			  .attr("height", 90+ Math.random()*90)
+			  .attr("stroke", "black")
+			  .attr("fill", "gold")
+			  .attr("opacity", 0.7)
+		}
+		
+		for (j=0; j<30;j++)
+		{
+			svg.append("rect")
+			  .attr("x", Math.random()*1300)
+			  .attr("y",  Math.random()*800)
+			  .attr("width", 150+ Math.random()*150)
+			  .attr("height", 90+ Math.random()*90)
+			  .attr("stroke", "black")
+			  .attr("fill", "darkblue")
+			  .attr("opacity", 0.7)
+		}
+		
+	
+
+	
+
+	}
+	
+  </script>
+</body>
+</html>
